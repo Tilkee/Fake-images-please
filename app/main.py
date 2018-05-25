@@ -22,8 +22,7 @@ launch_date = datetime.datetime.now()
 @app.route('/')
 def index():
     """Home page"""
-    # return render_template('index.html')
-    return render_template('404.html'), 404
+    return render_template('index.html')
 
 
 @app.route('/fakeimg/<i:width>/')
