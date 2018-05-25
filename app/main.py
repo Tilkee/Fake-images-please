@@ -22,23 +22,24 @@ launch_date = datetime.datetime.now()
 @app.route('/')
 def index():
     """Home page"""
-    return render_template('index.html')
+    # return render_template('index.html')
+    return render_template('404.html'), 404
 
 
-@app.route('/<i:width>/')
-@app.route('/<i:width>/<c:bgd>/')
-@app.route('/<i:width>/<c:bgd>,<a:alphabgd>/')
-@app.route('/<i:width>/<c:bgd>/<c:fgd>/')
-@app.route('/<i:width>/<c:bgd>,<a:alphabgd>/<c:fgd>/')
-@app.route('/<i:width>/<c:bgd>/<c:fgd>,<a:alphafgd>/')
-@app.route('/<i:width>/<c:bgd>,<a:alphabgd>/<c:fgd>,<a:alphafgd>/')
-@app.route('/<i:width>x<i:height>/')
-@app.route('/<i:width>x<i:height>/<c:bgd>/')
-@app.route('/<i:width>x<i:height>/<c:bgd>,<a:alphabgd>/')
-@app.route('/<i:width>x<i:height>/<c:bgd>/<c:fgd>/')
-@app.route('/<i:width>x<i:height>/<c:bgd>,<a:alphabgd>/<c:fgd>/')
-@app.route('/<i:width>x<i:height>/<c:bgd>/<c:fgd>,<a:alphafgd>/')
-@app.route('/<i:width>x<i:height>/<c:bgd>,<a:alphabgd>/<c:fgd>,<a:alphafgd>/')
+@app.route('/fakeimg/<i:width>/')
+@app.route('/fakeimg/<i:width>/<c:bgd>/')
+@app.route('/fakeimg/<i:width>/<c:bgd>,<a:alphabgd>/')
+@app.route('/fakeimg/<i:width>/<c:bgd>/<c:fgd>/')
+@app.route('/fakeimg/<i:width>/<c:bgd>,<a:alphabgd>/<c:fgd>/')
+@app.route('/fakeimg/<i:width>/<c:bgd>/<c:fgd>,<a:alphafgd>/')
+@app.route('/fakeimg/<i:width>/<c:bgd>,<a:alphabgd>/<c:fgd>,<a:alphafgd>/')
+@app.route('/fakeimg/<i:width>x<i:height>/')
+@app.route('/fakeimg/<i:width>x<i:height>/<c:bgd>/')
+@app.route('/fakeimg/<i:width>x<i:height>/<c:bgd>,<a:alphabgd>/')
+@app.route('/fakeimg/<i:width>x<i:height>/<c:bgd>/<c:fgd>/')
+@app.route('/fakeimg/<i:width>x<i:height>/<c:bgd>,<a:alphabgd>/<c:fgd>/')
+@app.route('/fakeimg/<i:width>x<i:height>/<c:bgd>/<c:fgd>,<a:alphafgd>/')
+@app.route('/fakeimg/<i:width>x<i:height>/<c:bgd>,<a:alphabgd>/<c:fgd>,<a:alphafgd>/')
 def placeholder(width, height=None,
                 bgd="cccccc", fgd="909090",
                 alphabgd=255, alphafgd=255):
