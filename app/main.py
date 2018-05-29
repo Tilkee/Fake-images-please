@@ -24,6 +24,9 @@ def index():
     """Home page"""
     return render_template('index.html')
 
+@app.route('/check/')
+def check():
+    return flask.Response(status=200)
 
 @app.route('/fakeimg/<i:width>/')
 @app.route('/fakeimg/<i:width>/<c:bgd>/')
