@@ -1,0 +1,33 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-eks: circleci/aws-eks@0.2.6
+workflows:
+  build_push_and_deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          context: AWS-ECR-EKS
+          checkout: true
+          repo: tilkee/fake-img
+          tag: '$CIRCLE_BRANCH-$CIRCLE_SHA1,$CIRCLE_BRANCH'
+          filters:
+            branches:
+              only:
+                - circleci
+                - develop
+                - staging
+                - master
+      - aws-eks/update-container-image:
+          requires:
+            - aws-ecr/build-and-push-image
+          context: AWS-ECR-EKS
+          cluster-name: tilkee-$CIRCLE_BRANCH
+          resource-name: deployment/fake-img
+          aws-region: $AWS_REGION
+          container-image-updates: fake-img=$AWS_ECR_ACCOUNT_URL/tilkee/fake-img:$CIRCLE_BRANCH-$CIRCLE_SHA1
+          filters:
+            branches:
+              only:
+                - circleci
+                - develop
+                - staging

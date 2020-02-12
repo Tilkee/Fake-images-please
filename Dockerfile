@@ -1,6 +1,6 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 
-MAINTAINER Jérôme Mahuet <jerome.mahuet@gmail.com>
+LABEL maintainer="Jérôme Mahuet <jerome.mahuet@gmail.com>"
 
 RUN apk --update --no-cache add \
     build-base \
